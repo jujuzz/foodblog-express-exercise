@@ -1,0 +1,95 @@
+doctype html
+html(lang='en')
+  head
+    title Food Blog
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    script(src='https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js')
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    link(href='https://fonts.googleapis.com/css2?family=Sacramento&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='/public/stylesheets/style.css')
+  body
+    aside#leftside
+    aside#rightside
+    #container.container
+      header#header
+        mycoponent1
+      main#main
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+          button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarNavAltMarkup.collapse.navbar-collapse
+            .navbar-nav
+              a.nav-item.nav-link.active(href='#')
+                | Home
+                span.sr-only (current)
+              a.nav-item.nav-link(href='#') Recipes
+              a.nav-item.nav-link(href='#') Lifestyles
+              a.nav-item.nav-link(href='#') Videos
+              a.nav-item.nav-link(href='#') About
+        mycoponent2
+        .row
+          aside#photos.col-3
+            img(v-bind:src='aside_img' alt='White Chicken Chili' width='180')
+          section#blogposts.col-9
+            .post
+              .relative-position
+                img.profile(v-bind:src='post1.image' v-on:click='displayInfo($event, 0)')
+                .vertical-center
+                  span.author {{post1.author}}
+                  |  — 
+                  span.date {{post1.date}}&nbsp;
+                  span.reply REPLY
+              p {{post1.desc}}
+            .post
+              .relative-position
+                img.profile(v-bind:src='post2.image' v-on:click='displayInfo($event, 1)')
+                .vertical-center
+                  span.author {{post2.author}}
+                  |  — 
+                  span.date {{post2.date}}&nbsp;
+                  span.reply REPLY
+              p {{post2.desc}}
+            .post
+              .relative-position
+                img.profile(v-bind:src='post3.image' v-on:click='displayInfo($event, 2)')
+                .vertical-center
+                  span.author {{post3.author}}
+                  |  — 
+                  span.date {{post3.date}}&nbsp;
+                  span.reply REPLY
+              p {{post3.desc}}
+            .post
+              .relative-position
+                img.profile(v-bind:src='post4.image' v-on:click='displayInfo($event, 3)')
+                .vertical-center
+                  span.author {{post4.author}}
+                  |  — 
+                  span.date {{post4.date}}&nbsp;
+                  span.reply REPLY
+              p {{post4.desc}}
+        // Modal
+        #myModal.modal.dark
+          .modal-dialog
+            .modal-content
+              .modal-body
+                button.close.text-white(type='button' data-dismiss='modal' aria-label='Close')
+                  span(aria-hidden='true') ×
+                h5#exampleModalLabel.modal-title {{modal.author}}
+                br
+                div
+                  span.font-weight-bold Foodie Level: 
+                  span {{modal.foodie_evel}}
+                  br
+                .font-weight-bold Bio:
+                span {{modal.bio}}
+                br
+                br
+                button.btn.btn-light(type='button' data-dismiss='modal') Close
+      footer
+        | © Copyright FOOD BLOG
+    script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+    script(src='/public/javascripts/vue.js')
